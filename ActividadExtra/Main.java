@@ -206,23 +206,28 @@ public class Main {
     
     
     public static void main(String[] args) {
-    	g = image.createGraphics();
-            paint();
-            paint2();
-            paint3();
-            paint4();
-            paint5();
-            paint6();
+        // Crear una nueva imagen con el tamaño deseado
+        int width = 800;
+        int height = 600;
+        image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        g = image.createGraphics();
 
-            // Write the images into a GIF file
-            try {
- 
-                System.out.println("GIF created successfully!");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        // Llamar a los métodos de pintura
+        paint();
+        paint2();
+        paint3();
+        paint4();
+        paint5();
+        paint6();
+
+        // Guardar la imagen como un archivo GIF
+        try {
+            File outputFile = new File("output.gif");
+            ImageIO.write(image, "gif", outputFile);
+            System.out.println("GIF creado exitosamente!");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        
+    }
 }
 
